@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["contact@mattways.com"]
   s.homepage    = "https://github.com/mattways/rails-pagination"
   s.summary     = "Another pagination alternative."
-  s.description = "Inspired in Kaminari and will_paginate with some extra handy methods and only for rails."
+  s.description = "Inspired in kaminari and will_paginate but with some extra handy methods and only for rails."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
