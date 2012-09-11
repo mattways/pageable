@@ -1,3 +1,48 @@
-= RailsPagination
+= Rails Pagination
 
-This project rocks and uses MIT-LICENSE.
+Inspired in kaminari and will_paginate but with some extra handy methods and only for rails.
+
+= Install
+
+Put this line in your Gemfile:
+  gem 'rails-pagination', :git => 'git@github.com:mattways/rails-pagination.git'
+  
+Then bundle:
+  $ bundle
+  
+= Usage
+
+The same approach as kaminari:
+  Model.page(1).per(2)
+  
+But doesn't have any view helper rather, that force you to use an specific markup you can create your own using easy to use helpers in the relation.
+  <% if collection.has_multiple_pages? %>
+    <div class="pager">
+      <% if collection.has_first_page? %>
+        <%=link_to t('pager.first'), url_for(:page => collection.first_page) %>
+      <% end %>
+      <% if collection.has_previous_page? %>
+        <%=link_to t('pager.previous'), url_for(:page => collection.previous_page)  %>
+      <% end %>    
+      <% navigation = collection.navigation_options(3) %>   
+      <% if navigation[:less_pages?] %>
+        <span class="ellipsis">...</span>
+      <% end %>
+      <% for page in navigation[:range] %>
+        <% if collection.is_current_page? page %>
+          <span class="current"><%= page %></span>
+        <% else %>
+          <%=link_to page, url_for(:page => page) %>      
+        <% end %>
+      <% end %>
+      <% if navigation[:more_pages?] %>
+        <span class="ellipsis">...</span>
+      <% end %>    
+      <% if collection.has_next_page? %>
+        <%=link_to t('pager.next'), url_for(:page => collection.next_page) %>      
+      <% end %>
+      <% if collection.has_last_page? %>
+        <%=link_to t('pager.last'), url_for(:page => collection.last_page) %>
+      <% end %>    
+    </div>
+  <% end %>

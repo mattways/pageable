@@ -74,6 +74,10 @@ module RailsPagination
         1
       end
       
+      def has_first_page?
+        current_page > 1 and total_pages > 1
+      end
+      
       def is_first_page?
         @is_first_page ||= current_page == 1
       end
@@ -81,6 +85,10 @@ module RailsPagination
       def last_page
         total_pages
       end      
+      
+      def has_last_page?
+        current_page != last_page and total_pages > 1
+      end
 
       def is_last_page?
         @is_last_page ||= current_page == total_pages
