@@ -15,7 +15,7 @@ Then bundle:
 The same approach as kaminari:
   Model.page(1).per(2)
   
-But doesn't have any view helper rather, that force you to use an specific markup you can create your own using easy to use helpers in the relation.
+But doesn't have any view helper, rather that force you to use an specific markup you can create your own using easy to use helpers in the relation:
   <% if collection.has_multiple_pages? %>
     <div class="pager">
       <% if collection.has_first_page? %>
