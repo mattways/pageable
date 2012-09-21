@@ -11,7 +11,7 @@ module RailsPagination
         defined?(@per_page) ? @per_page : Rails.application.config.pagination.per_page 
       end
 
-      def per_page=(value)
+      def per_page(value)
         value = [value.to_i, 1].max
         @per_page = value
       end
