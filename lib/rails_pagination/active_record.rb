@@ -2,18 +2,18 @@ module RailsPagination
   module ActiveRecord
     module BaseMethods
         
-      def page(number=nil)
-        r = limit(default_per_page).offset(default_per_page * ([number.to_i, 1].max - 1))
+      def page(number)
+        r = limit(per_page).offset(per_page * ([number.to_i, 1].max - 1))
         r.extending(RailsPagination::ActiveRecord::RelationMethods)
       end
     
-      def default_per_page
-        defined?(@default_per_page) ? @default_per_page : 30 
+      def per_page
+        defined?(@per_page) ? @per_page : Rails.application.config.pagination.per_page 
       end
 
-      def default_per_page=(value)
+      def per_page=(value)
         value = [value.to_i, 1].max
-        @default_per_page = value
+        @per_page = value
       end
     
     end
