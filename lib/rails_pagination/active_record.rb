@@ -6,14 +6,13 @@ module RailsPagination
         r = limit(per_page).offset(per_page * ([number.to_i, 1].max - 1))
         r.extending(RailsPagination::ActiveRecord::RelationMethods)
       end
-    
-      def per_page
-        defined?(@per_page) ? @per_page : Rails.application.config.pagination.per_page 
-      end
 
-      def per_page(value)
-        value = [value.to_i, 1].max
-        @per_page = value
+      def per_page(value=nil)
+        unless value.nil?
+          value = [value.to_i, 1].max
+          @per_page = value
+        end
+        defined?(@per_page) ? @per_page : Rails.application.config.pagination.per_page          
       end
     
     end
