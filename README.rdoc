@@ -16,33 +16,23 @@ The same approach as kaminari:
   Model.page(1).per(2)
   
 But doesn't have any view helper, rather that force you to use an specific markup you can create your own using easy to use helpers in the relation:
-  <% if collection.has_multiple_pages? %>
-    <div class="pager">
-      <% if collection.has_first_page? %>
-        <%=link_to t('pager.first'), url_for(:page => collection.first_page) %>
-      <% end %>
-      <% if collection.has_previous_page? %>
-        <%=link_to t('pager.previous'), url_for(:page => collection.previous_page)  %>
-      <% end %>    
-      <% navigation = collection.navigation_options(3) %>   
-      <% if navigation[:less_pages?] %>
-        <span class="ellipsis">...</span>
-      <% end %>
-      <% for page in navigation[:range] %>
-        <% if collection.is_current_page? page %>
-          <span class="current"><%= page %></span>
-        <% else %>
-          <%=link_to page, url_for(:page => page) %>      
-        <% end %>
-      <% end %>
-      <% if navigation[:more_pages?] %>
-        <span class="ellipsis">...</span>
-      <% end %>    
-      <% if collection.has_next_page? %>
-        <%=link_to t('pager.next'), url_for(:page => collection.next_page) %>      
-      <% end %>
-      <% if collection.has_last_page? %>
-        <%=link_to t('pager.last'), url_for(:page => collection.last_page) %>
-      <% end %>    
-    </div>
-  <% end %>
+  - if collection.has_multiple_pages?
+    #pager
+      - if collection.has_first_page?
+        %a{:href => url_for(request.query_parameters.merge(:p => collection.first_page)), :class => 'first'}= t('pager.first')
+      - if collection.has_previous_page?
+        %a{:href => url_for(request.query_parameters.merge(:p => collection.previous_page)), :class => 'previous'}= t('pager.previous')
+      - navigation = collection.navigation_options(3)  
+      - if navigation[:less_pages?]
+        %span.ellipsis ...
+      - for page in navigation[:range]
+        - if collection.is_current_page? page
+          %span.page.current= page     
+        - else
+          %a{:href => url_for(request.query_parameters.merge(:p => page)), :class => 'page'}= page 
+      - if navigation[:more_pages?]
+        %span.ellipsis ...  
+      - if collection.has_next_page?
+        %a{:href => url_for(request.query_parameters.merge(:p => collection.next_page)), :class => 'next'}= t('pager.next')    
+      - if collection.has_last_page?
+        %a{:href => url_for(request.query_parameters.merge(:p => collection.last_page)), :class => 'last'}= t('pager.last')
