@@ -1,6 +1,6 @@
 = Rails Pagination
 
-Inspired in kaminari and will_paginate but with some extra handy methods and only for rails.
+Inspired in kaminari and will_paginate but more minimalistic
 
 = Install
 
