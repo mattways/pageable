@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Mattways"]
   s.email       = ["contact@mattways.com"]
   s.homepage    = "https://github.com/mattways/rails-pagination"
-  s.summary     = "Another pagination alternative."
-  s.description = "Inspired in kaminari and will_paginate but with some extra handy methods and only for rails."
+  s.summary     = "Minimalistic pagination alternative."
+  s.description = "Inspired in kaminari and will_paginate but more minimalistic and only for rails."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
