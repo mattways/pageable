@@ -5,7 +5,7 @@ Inspired in kaminari and will_paginate but more minimalistic
 = Install
 
 Put this line in your Gemfile:
-  gem 'rails-pagination', :git => 'git@github.com:mattways/rails-pagination.git'
+  gem 'rails-pagination'
   
 Then bundle:
   $ bundle
@@ -15,7 +15,7 @@ Then bundle:
 The same approach as kaminari:
   Model.page(1).per(2)
   
-But doesn't have any view helper, rather that force you to use an specific markup you can create your own using easy to use helpers in the relation:
+But doesn't have any view helper, rather that force you to use an specific markup you can create your own using pretty simple helpers in the relation:
   - if collection.has_multiple_pages?
     #pager
       - if collection.has_first_page?
