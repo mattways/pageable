@@ -19,9 +19,9 @@ But doesn't have any view helper, rather that force you to use an specific marku
   - if collection.has_multiple_pages?
     #pager
       - if collection.has_first_page?
-        %a{:href => url_for(request.query_parameters.merge(:p => collection.first_page)), :class => 'first'}= t('pager.first')
+        %a.first{:href => url_for(request.query_parameters.merge(:p => collection.first_page))}= t('pager.first')
       - if collection.has_previous_page?
-        %a{:href => url_for(request.query_parameters.merge(:p => collection.previous_page)), :class => 'previous'}= t('pager.previous')
+        %a.previous{:href => url_for(request.query_parameters.merge(:p => collection.previous_page))}= t('pager.previous')
       - navigation = collection.navigation_options(3)  
       - if navigation[:less_pages?]
         %span.ellipsis ...
@@ -29,10 +29,10 @@ But doesn't have any view helper, rather that force you to use an specific marku
         - if collection.is_current_page? page
           %span.page.current= page     
         - else
-          %a{:href => url_for(request.query_parameters.merge(:p => page)), :class => 'page'}= page 
+          %a.page{:href => url_for(request.query_parameters.merge(:p => page))}= page 
       - if navigation[:more_pages?]
         %span.ellipsis ...  
       - if collection.has_next_page?
-        %a{:href => url_for(request.query_parameters.merge(:p => collection.next_page)), :class => 'next'}= t('pager.next')    
+        %a.next{:href => url_for(request.query_parameters.merge(:p => collection.next_page))}= t('pager.next')    
       - if collection.has_last_page?
-        %a{:href => url_for(request.query_parameters.merge(:p => collection.last_page)), :class => 'last'}= t('pager.last')
+        %a.last{:href => url_for(request.query_parameters.merge(:p => collection.last_page))}= t('pager.last')
