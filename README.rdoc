@@ -39,6 +39,8 @@ But doesn't force you to use any markup, just use the methods of the pager objec
       - if pager.has_last_page?
         %a.last{:href => pager.last_page_path}= t('pager.last')
 
+= Configuration
+
 If you want to change the default parameter name or the default navigation length call paginate method this way:
   paginate(@collection, :navigation => 3, :parameter => :p)
 Or to set it globally put this in your application.rb:
