@@ -25,10 +25,6 @@ class ActionViewEmptyTest < ActionView::TestCase
     assert !@pager.has_last_page?
   end
 
-  test "something" do
-    @pager.current_page_path
-  end
-
   protected
 
   def create_pager
