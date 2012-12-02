@@ -1,4 +1,4 @@
-<% pager = paginate(@collection, :navigation => 3, :parameter => :p) %>
+<% pager = paginate(@collection) %>
 <% if pager.has_multiple_pages? %>
   <div id="pager">
     <% if pager.has_first_page? %>

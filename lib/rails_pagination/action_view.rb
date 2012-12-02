@@ -12,8 +12,8 @@ module RailsPagination
           options = args.extract_options!
           @template = args[0]
           @collection = args[1]
-          @parameter = options[:parameter] ? options[:parameter] : :p 
-          @navigation = Navigation.new(args[1], options[:navigation] ? options[:navigation] : 5)
+          @parameter = options[:parameter] || Rails.application.config.pagination.default_parameter 
+          @navigation = Navigation.new(args[1], options[:navigation] || Rails.application.config.pagination.default_navigation)
         end
 
         def has_multiple_pages?

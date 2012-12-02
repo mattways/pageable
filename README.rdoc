@@ -18,7 +18,7 @@ The same approach as kaminari:
   Model.page(1).per(2)
   
 But doesn't force you to use any markup, just use the methods of the paginate object in your views:
-  - pager = paginate(@collection, :navigation => 3, :parameter => :p)
+  - pager = paginate(@collection)
   - if pager.has_multiple_pages?
     #pager
       - if pager.has_first_page?
@@ -38,3 +38,14 @@ But doesn't force you to use any markup, just use the methods of the paginate ob
         %a.next{:href => pager.next_page_path}= t('pager.next')    
       - if pager.has_last_page?
         %a.last{:href => pager.last_page_path}= t('pager.last')
+
+If you want to change the default parameter name or the default the navigation length (in your view):
+  paginate(@collection, :navigation => 3, :parameter => :p)
+Or to set it globally in your application.rb:
+  config.pagination.default_parameter = :p
+  config.pagination.default_navigation = 5
+
+If you want to change the default per_page (in your controller):
+  default_per_page 5
+Or to set it globally in your application.rb:
+  config.pagination.default_per_page = 5
