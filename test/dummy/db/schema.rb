@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120908215532) do
 
-  create_table "houses", :force => true do |t|
+  create_table "models", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

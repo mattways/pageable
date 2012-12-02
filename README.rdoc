@@ -1,3 +1,5 @@
+{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/mattways/rails-pagination] {<img src="https://secure.travis-ci.org/mattways/rails-pagination.png?branch=master" alt="Build Status" />}[https://travis-ci.org/mattways/rails-pagination] {<img src="https://gemnasium.com/mattways/rails-pagination.png" alt="Dependency Status" />}[https://gemnasium.com/mattways/rails-pagination]
+
 = Rails Pagination
 
 Inspired in kaminari and will_paginate but more minimalistic
@@ -15,24 +17,24 @@ Then bundle:
 The same approach as kaminari:
   Model.page(1).per(2)
   
-But doesn't have any view helper, rather that force you to use an specific markup you can create your own using pretty simple helpers in the relation:
-  - if collection.has_multiple_pages?
+But doesn't force you to use any markup, just use the methods of the paginate object in your views:
+  - pager = paginate(@collection, :navigation => 3, :parameter => :p)
+  - if pager.has_multiple_pages?
     #pager
-      - if collection.has_first_page?
-        %a.first{:href => url_for(request.query_parameters.merge(:p => collection.first_page))}= t('pager.first')
-      - if collection.has_previous_page?
-        %a.previous{:href => url_for(request.query_parameters.merge(:p => collection.previous_page))}= t('pager.previous')
-      - navigation = collection.navigation_options(3)  
-      - if navigation[:less_pages?]
+      - if pager.has_first_page?
+        %a.first{:href => pager.first_page_path}= t('pager.first')
+      - if pager.has_previous_page?
+        %a.previous{:href => pager.previous_page_path}= t('pager.previous')
+      - if pager.navigation.has_less_pages?
         %span.ellipsis ...
-      - for page in navigation[:range]
-        - if collection.is_current_page? page
+      - for page in pager.navigation.pages
+        - if pager.is_current_page? page
           %span.page.current= page     
         - else
-          %a.page{:href => url_for(request.query_parameters.merge(:p => page))}= page 
-      - if navigation[:more_pages?]
+          %a.page{:href => pager.page_path(page)}= page 
+      - if pager.navigation.has_more_pages?
         %span.ellipsis ...  
-      - if collection.has_next_page?
-        %a.next{:href => url_for(request.query_parameters.merge(:p => collection.next_page))}= t('pager.next')    
-      - if collection.has_last_page?
-        %a.last{:href => url_for(request.query_parameters.merge(:p => collection.last_page))}= t('pager.last')
+      - if pager.has_next_page?
+        %a.next{:href => pager.next_page_path}= t('pager.next')    
+      - if pager.has_last_page?
+        %a.last{:href => pager.last_page_path}= t('pager.last')

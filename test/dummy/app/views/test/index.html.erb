@@ -1,0 +1,30 @@
+<% pager = paginate(@collection, :navigation => 3, :parameter => :p) %>
+<% if pager.has_multiple_pages? %>
+  <div id="pager">
+    <% if pager.has_first_page? %>
+      <a class="first" href="<%= pager.first_page_path %>"><%= t('pager.first') %></a>
+    <% end %>
+    <% if pager.has_previous_page? %>
+      <a class="previous" href="<%= pager.previous_page_path %>"><%= t('pager.previous') %></a>
+    <% end %>
+    <% if pager.navigation.has_less_pages? %>
+      <span class="ellipsis">...</span>
+    <% end %>
+    <% for page in pager.navigation.pages %>
+      <% if pager.is_current_page? page %>
+        <span class="page current"><%= page %></span>     
+      <% else %>
+        <a class="page" href="<%= pager.page_path(page) %>"><%= page %></a>
+      <% end %>
+    <% end %>
+    <% if pager.navigation.has_more_pages? %>
+      <span class="ellipsis">...</span>  
+    <% end %>
+    <% if pager.has_next_page? %>
+      <a class="next" href="<%= pager.next_page_path %>"><%= t('pager.next') %></a>
+    <% end %>
+    <% if pager.has_last_page? %>
+      <a class="last" href="<%= pager.last_page_path %>"><%= t('pager.last') %></a>
+    <% end %>
+  </div>
+<% end %>
