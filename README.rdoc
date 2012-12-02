@@ -17,7 +17,7 @@ Then bundle:
 The same approach as kaminari:
   Model.page(1).per(2)
   
-But doesn't force you to use any markup, just use the methods of the paginate object in your views:
+But doesn't force you to use any markup, just use the methods of the pager object in your views:
   - pager = paginate(@collection)
   - if pager.has_multiple_pages?
     #pager
