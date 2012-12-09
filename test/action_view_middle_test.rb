@@ -25,11 +25,23 @@ class ActionViewMiddleTest < ActionView::TestCase
     assert @pager.has_last_page?
   end
 
+  test "should have less pages" do
+    assert @pager.navigation.has_less_pages?
+  end
+
+  test "should start at 2 and end at 4" do
+    assert_equal @pager.navigation.pages, 2..4
+  end
+
+  test "shuld have more pages" do
+    assert @pager.navigation.has_more_pages?
+  end
+
   protected
 
   def create_pager
     10.times.each { |id| Model.create :title => "Record #{id}" }
-    @pager = paginate(Model.page(3).per(2), :navigate => 3, :parameter => :page)
+    @pager = paginate(Model.page(3).per(2), :navigation => 3, :parameter => :page)
   end
 
 end

@@ -25,10 +25,22 @@ class ActionViewEmptyTest < ActionView::TestCase
     assert !@pager.has_last_page?
   end
 
+  test "should not have less pages" do
+    assert !@pager.navigation.has_less_pages?
+  end
+
+  test "should start at 1 and end at 1" do
+    assert_equal @pager.navigation.pages, 1..1
+  end
+
+  test "shuld not have more pages" do
+    assert !@pager.navigation.has_more_pages?
+  end
+
   protected
 
   def create_pager
-    @pager = paginate(Model.page(1).per(2), :navigate => 3, :parameter => :page)
+    @pager = paginate(Model.page(1).per(2), :navigation => 3, :parameter => :page)
   end
 
 end
