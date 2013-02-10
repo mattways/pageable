@@ -47,7 +47,7 @@ module RailsPagination
       end
 
       def current_page
-        @current_page ||= (offset_value / limit_value) + 1
+        @current_page ||= (offset_value.to_f / limit_value).ceil + 1
       end
 
       def previous_page
