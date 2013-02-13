@@ -47,7 +47,7 @@ Or to set it globally put this in your application.rb:
   config.pagination.default_parameter = :p
   config.pagination.default_navigation = 5
 
-If you want to change the default per_page put this in your controller:
+If you want to change the default per_page put this in your model:
   default_per_page 5
 Or to set it globally put this in your application.rb:
   config.pagination.default_per_page = 5
