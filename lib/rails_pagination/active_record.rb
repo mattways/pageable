@@ -44,7 +44,7 @@ module RailsPagination
       
       def total_pages
         custom_limit = (current_page > 0 and offset_value > 0) ? (offset_value / (current_page-1)) : false
-        @total_pages ||= [((total_count.to_f / (custom_limit ? custom_limit : limit_value))).ceil, 1].max
+        @total_pages ||= [(((total_count.to_f - (((current_page-1) * limit_value) - offset_value)) / (custom_limit ? custom_limit : limit_value))).ceil, 1].max
       end
 
       def current_page
