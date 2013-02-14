@@ -30,7 +30,8 @@ module RailsPagination
       
       def pad(value)
         @padding = value
-        (offset_value + value) < 0 ? self : offset(offset_value + value)
+        r = (offset_value + value) < 0 ? self : offset(offset_value + value)
+        value < 0 ? r.limit(limit_value + value) : r
       end
       
       def total_count
@@ -48,11 +49,11 @@ module RailsPagination
       end            
       
       def total_pages
-        @total_pages ||= [((total_count - ((!defined?(@padding).nil? and @padding < 0) ? @padding : 0)).to_f / limit_value).ceil, 1].max
+        @total_pages ||= [(fixed_total_count.to_f / fixed_limit_value).ceil, 1].max
       end
 
       def current_page
-        @current_page ||= (offset_value.to_f / limit_value).ceil + 1
+        @current_page ||= (offset_value.to_f / fixed_limit_value).ceil + 1
       end
 
       def previous_page
@@ -73,7 +74,25 @@ module RailsPagination
       
       def out_of_bounds?
         @out_of_bounds ||= current_page > total_pages or current_page < first_page
-      end    
+      end
+      
+      protected
+      
+      def has_padding?
+        not defined?(@padding).nil?
+      end
+      
+      def padding_negative?
+        has_padding? and @padding < 0
+      end
+      
+      def fixed_total_count
+        total_count - (padding_negative? ? @padding : 0)
+      end
+      
+      def fixed_limit_value
+        limit_value - (padding_negative? ? @padding : 0)
+      end
       
     end
   end
