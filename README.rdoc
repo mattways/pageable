@@ -15,7 +15,7 @@ Then bundle:
 = Usage
 
 The same approach as kaminari:
-  Model.page(1).per(2)
+  Model.page(1).per(20)
   
 But doesn't force you to use any markup, just use the methods of the pager object in your views:
   - pager = paginate(@collection)
@@ -41,13 +41,22 @@ But doesn't force you to use any markup, just use the methods of the pager objec
 
 = Configuration
 
+== Default parame name
+
 If you want to change the default parameter name or the default navigation length call paginate method this way:
   paginate(@collection, :navigation => 3, :parameter => :p)
 Or to set it globally put this in your application.rb:
   config.pagination.default_parameter = :p
   config.pagination.default_navigation = 5
 
+== Default per page
+
 If you want to change the default per_page put this in your model:
   default_per_page 5
 Or to set it globally put this in your application.rb:
   config.pagination.default_per_page = 5
+
+== Padding
+
+You can use positive and negative padding:
+  Model.page(1).per(10).pad(-4)
