@@ -44,7 +44,7 @@ module RailsPagination
       
       def total_pages
         total_fix = (((current_page-1) * limit_value) - offset_value)
-        @total_pages ||= [((total_count.to_f - total_fix) / limit_value).ceil, 1].max
+        @total_pages ||= [(total_count.to_f / limit_value).ceil, 1].max + (total_fix / limit_value).ceil
       end
 
       def current_page
