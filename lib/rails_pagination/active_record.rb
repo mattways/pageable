@@ -23,10 +23,15 @@ module RailsPagination
     end
     module RelationMethods
       
-      def per(number)
-        number = [number.to_i, 1].max
-        limit(number).offset(number * (offset_value / limit_value))
+      def per(value)
+        value = [value.to_i, 1].max
+        limit(value).offset(value * (offset_value / limit_value))
       end      
+      
+      def pad(value)
+        @padding = value
+        (offset_value + value) < 0 ? self : offset(offset_value + value)
+      end
       
       def total_count
         @total_count ||= begin
@@ -43,8 +48,7 @@ module RailsPagination
       end            
       
       def total_pages
-        total_fix = (((current_page-1) * limit_value) - offset_value)
-        @total_pages ||= [(total_count.to_f / limit_value).ceil, 1].max + (total_fix.to_f / limit_value).ceil
+        @total_pages ||= [((total_count - ((!defined?(@padding).nil? and @padding < 0) ? @padding : 0)).to_f / limit_value).ceil, 1].max
       end
 
       def current_page
