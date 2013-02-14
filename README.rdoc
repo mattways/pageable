@@ -1,4 +1,4 @@
-{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/mattways/rails-pagination] {<img src="https://secure.travis-ci.org/mattways/rails-pagination.png?branch=master" alt="Build Status" />}[https://travis-ci.org/mattways/rails-pagination] {<img src="https://gemnasium.com/mattways/rails-pagination.png" alt="Dependency Status" />}[https://gemnasium.com/mattways/rails-pagination]
+{<img src="https://codeclimate.com/github/mattways/rails-pagination.png" />}[https://codeclimate.com/github/mattways/rails-pagination] {<img src="https://secure.travis-ci.org/mattways/rails-pagination.png?branch=master" alt="Build Status" />}[https://travis-ci.org/mattways/rails-pagination] {<img src="https://gemnasium.com/mattways/rails-pagination.png" alt="Dependency Status" />}[https://gemnasium.com/mattways/rails-pagination]
 
 = Rails Pagination
 
@@ -41,7 +41,7 @@ But doesn't force you to use any markup, just use the methods of the pager objec
 
 = Configuration
 
-== Default parame name
+== Default param name
 
 If you want to change the default parameter name or the default navigation length call paginate method this way:
   paginate(@collection, :navigation => 3, :parameter => :p)
