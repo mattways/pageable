@@ -31,7 +31,7 @@ module RailsPagination
       def pad(value)
         @padding = value
         r = (offset_value + value) < 0 ? self : offset(offset_value + value)
-        value < 0 ? r.limit(limit_value + value) : r
+        decrease_limit? ? r.limit(limit_value + value) : r
       end
       
       def total_count
@@ -86,12 +86,16 @@ module RailsPagination
         has_padding? and @padding < 0
       end
       
+      def decrease_limit?
+        padding_negative? and offset_value == 0
+      end
+      
       def fixed_total_count
         total_count - (padding_negative? ? @padding : 0)
       end
       
       def fixed_limit_value
-        limit_value - (padding_negative? ? @padding : 0)
+        limit_value - (decrease_limit? ? @padding : 0)
       end
       
     end
