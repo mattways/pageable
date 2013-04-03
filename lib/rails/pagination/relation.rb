@@ -1,28 +1,7 @@
-module RailsPagination
-  module ActiveRecord
-    module BaseMethods   
-      
-      def inherited(subclass)
-        if subclass.superclass == ::ActiveRecord::Base
-          subclass.scope :page, Proc.new {|number|
-            subclass.limit(subclass.default_per_page).offset(subclass.default_per_page * ([number.to_i, 1].max - 1))
-          } do
-            include RailsPagination::ActiveRecord::RelationMethods
-          end
-        end       
-      end
+module Rails
+  module Pagination
+    module Relation
 
-      def default_per_page(value=nil)
-        unless value.nil?
-          value = [value.to_i, 1].max
-          @default_per_page = value
-        end
-        defined?(@default_per_page).nil? ? Rails.application.config.pagination.default_per_page : @default_per_page 
-      end
-
-    end
-    module RelationMethods
-      
       def per(value)
         value = [value.to_i, 1].max
         limit(value).offset(value * (offset_value / limit_value))
@@ -97,9 +76,7 @@ module RailsPagination
       def fixed_limit_value
         limit_value - (decrease_limit? ? @padding : 0)
       end
-      
+
     end
   end
 end
-
-ActiveRecord::Base.send :extend, RailsPagination::ActiveRecord::BaseMethods
