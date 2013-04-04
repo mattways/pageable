@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActiveRecordEmptyText < ActiveSupport::TestCase
+class CollectionEmptyTest < ActiveSupport::TestCase
 
   setup :create_records
 

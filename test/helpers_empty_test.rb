@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActionViewEmptyTest < ActionView::TestCase
+class HelpersEmptyTest < ActionView::TestCase
   include Rails::Pagination::Helpers
   
   setup :create_pager

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActiveRecordPaddingTest < ActiveSupport::TestCase
+class CollectionPaddingTest < ActiveSupport::TestCase
   
   test "negative padding should have 1 page" do
     11.times.each { |id| Model.create :title => "Record #{id}" }

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ActionViewMiddleTest < ActionView::TestCase
+class HelpersFirstTest < ActionView::TestCase
   include Rails::Pagination::Helpers
 
   setup :create_pager
@@ -8,13 +8,13 @@ class ActionViewMiddleTest < ActionView::TestCase
   test "should have multiple pages" do
     assert @pager.has_multiple_pages?
   end
-  
-  test "should have first page" do
-    assert @pager.has_first_page?
-  end
 
-  test "should have previous page" do
-    assert @pager.has_previous_page?
+  test "should not have first page" do
+    assert !@pager.has_first_page?
+  end
+  
+  test "should not have previous page" do
+    assert !@pager.has_previous_page?
   end
 
   test "should have next page" do
@@ -25,12 +25,12 @@ class ActionViewMiddleTest < ActionView::TestCase
     assert @pager.has_last_page?
   end
 
-  test "should have less pages" do
-    assert @pager.navigation.has_less_pages?
+  test "should not have less pages" do
+    assert !@pager.navigation.has_less_pages?
   end
 
-  test "should start at 2 and end at 4" do
-    assert_equal @pager.navigation.pages, 2..4
+  test "should have start at 1 and end at 3" do
+    assert_equal @pager.navigation.pages, 1..3
   end
 
   test "shuld have more pages" do
@@ -41,7 +41,7 @@ class ActionViewMiddleTest < ActionView::TestCase
 
   def create_pager
     10.times.each { |id| Model.create :title => "Record #{id}" }
-    @pager = paginate(Model.page(3).per(2), :navigation => 3, :parameter => :page)
+    @pager = paginate(Model.page(1).per(2), :navigation => 3, :parameter => :page)
   end
 
 end
