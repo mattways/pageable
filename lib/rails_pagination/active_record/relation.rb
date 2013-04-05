@@ -1,5 +1,5 @@
-module Rails
-  module Pagination
+module RailsPagination
+  module ActiveRecord
     module Relation
 
       def per(value)

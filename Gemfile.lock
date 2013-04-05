@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails-pagination (2.0.4)
+    rails_pagination (2.0.4)
       rails (>= 3.2.8)
 
 GEM
@@ -94,5 +94,5 @@ PLATFORMS
 
 DEPENDENCIES
   jquery-rails
-  rails-pagination!
+  rails_pagination!
   sqlite3

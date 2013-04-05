@@ -1,6 +1,6 @@
-module Rails
-  module Pagination
-    module Helpers
+module RailsPagination
+  module ActionView
+    module Base
 
       def paginate(*args)
         Pager.new *args.unshift(self)
