@@ -46,7 +46,7 @@ module RailsPagination
     end
 
     def page_path(page)
-      @request.request.path + (@template.request.query_parameters.any? ? "?#{@template.request.query_parameters.merge(@parameter => page)}" : '')
+      @template.request.path + (@template.request.query_parameters.any? ? "?#{@template.request.query_parameters.merge(@parameter => page)}" : '')
     end
 
     def page_url(page)
