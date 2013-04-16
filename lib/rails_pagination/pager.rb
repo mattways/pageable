@@ -50,7 +50,7 @@ module RailsPagination
     end
 
     def page_url(page)
-      @template.request.protocol + @template.request.host + page_path(page)
+      @template.request.protocol + @template.request.host_with_port + page_path(page)
     end
 
     def current_page_path
