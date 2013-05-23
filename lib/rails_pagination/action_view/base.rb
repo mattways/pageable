@@ -3,11 +3,11 @@ module RailsPagination
     module Base
 
       def paginate(*args)
-        Pager.new *args.unshift(self)
+        Pagination.new *args.unshift(request)
       end
 
-      def pager(collection)
-        render partial: 'rails_pagination/pager', locals: { collection: collection }
+      def pager(*args)
+        render partial: 'rails_pagination/pager', locals: { pagination: paginate(*args) }
       end
 
     end

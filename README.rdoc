@@ -17,11 +17,11 @@ Then bundle:
 The same approach as kaminari:
   Model.page(1).per(20)
 
-You can use the default helper:
+You can use the default html with this helper:
   pager @collection
 
-Or you can make your own, take look at this partial:
-  app/views/rails_pagination/_pager.html.erb
+Or you can make your own just paginating the collection:
+  paginate @collection # Loot at app/views/rails_pagination/_pager.html.erb
 
 = Configuration
 

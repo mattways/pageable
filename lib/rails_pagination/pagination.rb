@@ -1,9 +1,9 @@
 module RailsPagination
-  class Pager
+  class Pagination
     
     def initialize(*args)
       options = args.extract_options!
-      @template = args[0]
+      @request = args[0]
       @collection = args[1]
       @parameter = options[:parameter] || Rails.application.config.pagination.default_parameter 
       @navigation = Navigation.new(args[1], options[:navigation] || Rails.application.config.pagination.default_navigation)
@@ -46,11 +46,11 @@ module RailsPagination
     end
 
     def page_path(page)
-      @template.request.path + '?' + @template.request.query_parameters.merge(@parameter => page).to_query
+      @request.path + '?' + @request.query_parameters.merge(@parameter => page).to_query
     end
 
     def page_url(page)
-      @template.request.protocol + @template.request.host_with_port + page_path(page)
+      @request.protocol + @request.host_with_port + page_path(page)
     end
 
     def current_page_path
