@@ -28,7 +28,7 @@ Or you can make your own, take look at this partial:
 == Default param name
 
 If you want to change the default parameter name or the default navigation length call paginate method this way:
-  paginate(@collection, navigation: 3, parameter: :p)
+  paginate @collection, navigation: 3, parameter: :p
 Or to set it globally put this in your application.rb:
   config.pagination.default_parameter = :p
   config.pagination.default_navigation = 5
