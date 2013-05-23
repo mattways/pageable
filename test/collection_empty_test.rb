@@ -2,7 +2,9 @@ require 'test_helper'
 
 class CollectionEmptyTest < ActiveSupport::TestCase
 
-  setup :create_records
+  setup do
+    @collection = Model.page(1).per(2)
+  end
 
   test "should have 1 page" do
     assert_equal @collection.total_pages, 1
@@ -30,12 +32,6 @@ class CollectionEmptyTest < ActiveSupport::TestCase
 
   test "should not be out of bounds" do
     assert !@collection.out_of_bounds?
-  end
-
-  protected
-
-  def create_records
-    @collection = Model.page(1).per(2)
   end
 
 end

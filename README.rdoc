@@ -16,35 +16,19 @@ Then bundle:
 
 The same approach as kaminari:
   Model.page(1).per(20)
-  
-But doesn't force you to use any markup, just use the methods of the pager object in your views:
-  - pager = paginate(@collection)
-  - if pager.has_multiple_pages?
-    #pager
-      - if pager.has_first_page?
-        %a.first{:href => pager.first_page_path}= t('pager.first')
-      - if pager.has_previous_page?
-        %a.previous{:href => pager.previous_page_path}= t('pager.previous')
-      - if pager.navigation.has_less_pages?
-        %span.ellipsis ...
-      - for page in pager.navigation.pages
-        - if pager.is_current_page? page
-          %span.page.current= page     
-        - else
-          %a.page{:href => pager.page_path(page)}= page 
-      - if pager.navigation.has_more_pages?
-        %span.ellipsis ...  
-      - if pager.has_next_page?
-        %a.next{:href => pager.next_page_path}= t('pager.next')    
-      - if pager.has_last_page?
-        %a.last{:href => pager.last_page_path}= t('pager.last')
+
+You can use the default helper:
+  pager @collection
+
+Or you can make your own, take look at this partial:
+  app/views/rails_pagination/_pager.html.erb
 
 = Configuration
 
 == Default param name
 
 If you want to change the default parameter name or the default navigation length call paginate method this way:
-  paginate(@collection, :navigation => 3, :parameter => :p)
+  paginate(@collection, navigation: 3, parameter: :p)
 Or to set it globally put this in your application.rb:
   config.pagination.default_parameter = :p
   config.pagination.default_navigation = 5

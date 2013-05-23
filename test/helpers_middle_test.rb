@@ -3,7 +3,10 @@ require 'test_helper'
 class HelpersMiddleTest < ActionView::TestCase
   include RailsPagination::ActionView::Base
 
-  setup :create_pager
+  setup do
+    10.times.each { |id| Model.create title: "Record #{id}" }
+    @pager = paginate(Model.page(3).per(2), navigation: 3, parameter: :page)
+  end
 
   test "should have multiple pages" do
     assert @pager.has_multiple_pages?
@@ -35,13 +38,6 @@ class HelpersMiddleTest < ActionView::TestCase
 
   test "shuld have more pages" do
     assert @pager.navigation.has_more_pages?
-  end
-
-  protected
-
-  def create_pager
-    10.times.each { |id| Model.create :title => "Record #{id}" }
-    @pager = paginate(Model.page(3).per(2), :navigation => 3, :parameter => :page)
   end
 
 end

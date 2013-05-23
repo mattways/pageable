@@ -2,7 +2,10 @@ require 'test_helper'
 
 class CollectionLastTest < ActiveSupport::TestCase
 
-  setup :create_records
+  setup do
+    10.times.each { |id| Model.create title: "Record #{id}" }
+    @collection = Model.page(5).per(2)
+  end
 
   test "should have 5 pages" do
     assert_equal @collection.total_pages, 5
@@ -30,13 +33,6 @@ class CollectionLastTest < ActiveSupport::TestCase
 
   test "should not be out of bounds" do
     assert !@collection.out_of_bounds?
-  end
-
-  protected
-
-  def create_records
-    10.times.each { |id| Model.create :title => "Record #{id}" }
-    @collection = Model.page(5).per(2)
   end
 
 end

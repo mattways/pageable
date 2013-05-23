@@ -3,7 +3,9 @@ require 'test_helper'
 class HelpersEmptyTest < ActionView::TestCase
   include RailsPagination::ActionView::Base
   
-  setup :create_pager
+  setup do
+    @pager = paginate(Model.page(1).per(2), navigation: 3, parameter: :page)
+  end
  
   test "should not have multiple pages" do
     assert !@pager.has_multiple_pages?
@@ -35,12 +37,6 @@ class HelpersEmptyTest < ActionView::TestCase
 
   test "shuld not have more pages" do
     assert !@pager.navigation.has_more_pages?
-  end
-
-  protected
-
-  def create_pager
-    @pager = paginate(Model.page(1).per(2), :navigation => 3, :parameter => :page)
   end
 
 end

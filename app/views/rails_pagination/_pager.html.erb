@@ -1,0 +1,24 @@
+<% p = paginate(collection) %>
+<% if p.has_multiple_pages? %>
+  <div class="pager">
+    <% if p.has_first_page? %>
+      <%= link_to t('pager.first'), p.first_page_path, class: 'first' %>
+    <% end %>
+    <% if p.has_previous_page? %>
+      <%= link_to t('pager.previous'), p.previous_page_path, class: 'previous' %>
+    <% end %>
+    <% p.navigation.pages.each do |page| %>
+      <% if p.is_current_page? page %>
+        <span class="page current"><%= page %></span>
+      <% else %>
+        <%= link_to page, p.page_path(page), class: 'page' %>
+      <% end %>
+    <% end %>
+    <% if p.has_next_page? %>
+      <%= link_to t('pager.next'), p.next_page_path, class: 'next' %> 
+    <% end %>
+    <% if p.has_last_page? %>
+      <%= link_to t('pager.last'), p.last_page_path, class: 'last' %>
+    <% end %>
+  </div>
+<% end %>
