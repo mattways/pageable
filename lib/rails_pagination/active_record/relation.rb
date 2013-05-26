@@ -17,8 +17,7 @@ module RailsPagination
         @total_count ||= begin
           c = except(:offset, :limit, :order)
           c = c.except(:includes) unless references_eager_loaded_tables?
-          uses_distinct_sql_statement = c.to_sql =~ /DISTINCT/i
-          if uses_distinct_sql_statement
+          if c.to_sql =~ /DISTINCT/i
             c.length
           else
             c = c.count

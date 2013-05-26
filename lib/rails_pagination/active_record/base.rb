@@ -3,13 +3,16 @@ module RailsPagination
     module Base
 
       def inherited(subclass)
-        if subclass.superclass == ::ActiveRecord::Base
-          subclass.scope :page, Proc.new {|number|
-            subclass.limit(subclass.default_per_page).offset(subclass.default_per_page * ([number.to_i, 1].max - 1))
-          } do
-            include RailsPagination::ActiveRecord::Relation
+        subclass.class_eval do
+          if superclass == ::ActiveRecord::Base
+            scope :page, Proc.new { |number|
+              limit(default_per_page).offset(default_per_page * ([number.to_i, 1].max - 1))
+            } do
+              include RailsPagination::ActiveRecord::Relation
+            end
           end
-        end       
+        end
+        super
       end
 
       def default_per_page(value=nil)
