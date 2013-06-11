@@ -6,12 +6,18 @@
     <% if pagination.has_previous_page? %>
       <%= link_to t('pager.previous'), pagination.previous_page_path, class: 'previous' %>
     <% end %>
+    <% if pagination.navigation.has_less_pages? %>
+      <span class="ellipsis">...</span>
+    <% end %>
     <% pagination.navigation.pages.each do |page| %>
       <% if pagination.is_current_page? page %>
         <span class="page current"><%= page %></span>
       <% else %>
         <%= link_to page, pagination.page_path(page), class: 'page' %>
       <% end %>
+    <% end %>
+    <% if pagination.navigation.has_more_pages? %>
+      <span class="ellipsis">...</span>
     <% end %>
     <% if pagination.has_next_page? %>
       <%= link_to t('pager.next'), pagination.next_page_path, class: 'next' %> 
