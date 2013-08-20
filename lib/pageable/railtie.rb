@@ -1,4 +1,4 @@
-module RailsPagination
+module Pageable
   class Railtie < Rails::Railtie
 
     config.pagination = ActiveSupport::OrderedOptions.new
@@ -6,9 +6,9 @@ module RailsPagination
     config.pagination.default_parameter = :p
     config.pagination.default_navigation = 5
 
-    initializer 'rails_pagination' do
-      ::ActiveRecord::Base.send :extend, RailsPagination::ActiveRecord::Base
-      ::ActionView::Base.send :include, RailsPagination::ActionView::Base
+    initializer 'pageable' do
+      ::ActiveRecord::Base.send :include, Pageable::ActiveRecord::Base
+      ::ActionView::Base.send :include, Pageable::ActionView::Base
     end
 
   end

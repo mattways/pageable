@@ -1,13 +1,14 @@
-module RailsPagination
+module Pageable
   module ActiveRecord
     module Relation
+      extend ActiveSupport::Concern
 
       def per(value)
         value = [value.to_i, 1].max
         limit(value).offset(value * (offset_value / limit_value))
       end      
       
-      def pad(value)
+      def padding(value)
         @padding = value
         r = (offset_value + value) < 0 ? self : offset(offset_value + value)
         decrease_limit? ? r.limit(limit_value + value) : r
@@ -15,14 +16,10 @@ module RailsPagination
       
       def total_count
         @total_count ||= begin
-          c = except(:offset, :limit, :order)
-          c = c.except(:includes) unless references_eager_loaded_tables?
-          if c.to_sql =~ /DISTINCT/i
-            c.length
-          else
-            c = c.count
-            c.respond_to?(:count) ? c.count : c
-          end
+          r = except(:offset, :limit, :order, :reorder)
+          r = r.except(:includes) unless eager_loading?
+          r = r.count
+          r.respond_to?(:count) ? r.count : r
         end
       end            
       
@@ -57,7 +54,7 @@ module RailsPagination
       protected
       
       def has_padding?
-        not defined?(@padding).nil?
+        !defined?(@padding).nil?
       end
       
       def padding_negative?

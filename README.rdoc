@@ -1,13 +1,13 @@
-{<img src="https://codeclimate.com/github/mattways/rails_pagination.png" />}[https://codeclimate.com/github/mattways/rails_pagination] {<img src="https://secure.travis-ci.org/mattways/rails_pagination.png?branch=master" alt="Build Status" />}[https://travis-ci.org/mattways/rails_pagination] {<img src="https://gemnasium.com/mattways/rails_pagination.png" alt="Dependency Status" />}[https://gemnasium.com/mattways/rails_pagination]
+{<img src="https://codeclimate.com/github/mattways/pageable.png" />}[https://codeclimate.com/github/mattways/pageable] {<img src="https://secure.travis-ci.org/mattways/pageable.png?branch=master" alt="Build Status" />}[https://travis-ci.org/mattways/pageable] {<img src="https://gemnasium.com/mattways/pageable.png" alt="Dependency Status" />}[https://gemnasium.com/mattways/pageable]
 
-= Rails Pagination
+= Pageable
 
-Inspired in kaminari and will_paginate but more minimalistic
+Inspired in kaminari and will_paginate but more minimalistic.
 
 = Install
 
 Put this line in your Gemfile:
-  gem 'rails_pagination'
+  gem 'pageable'
   
 Then bundle:
   $ bundle
@@ -15,32 +15,31 @@ Then bundle:
 = Usage
 
 The same approach as kaminari:
-  Model.page(1).per(20)
+  @records = Model.page(1).per(20)
 
-You can use the default html with this helper:
-  pager @collection
-
-Or you can make your own just paginating the collection:
-  paginate @collection # Loot at app/views/rails_pagination/_pager.html.erb
+And then just:
+  pager @records
 
 = Configuration
 
-== Default param name
+== Default parameter and navigation
 
-If you want to change the default parameter name or the default navigation length call pager/paginate this way:
-  pager @collection, navigation: 3, parameter: :p
+If you want to change the default parameter name or the default navigation length call pager:
+  pager @records, navigation: 3, parameter: :p
+
 Or to set it globally put this in your application.rb:
   config.pagination.default_parameter = :p
-  config.pagination.default_navigation = 5
+  config.pagination.default_navigation = 3
 
 == Default per page
 
 If you want to change the default per_page put this in your model:
   default_per_page 5
+
 Or to set it globally put this in your application.rb:
   config.pagination.default_per_page = 5
 
 == Padding
 
 You can use positive and negative padding:
-  Model.page(1).per(10).pad(-4)
+  Model.page(1).per(10).padding(-4)

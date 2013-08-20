@@ -1,0 +1,29 @@
+<% if relation.total_pages > 1 %>
+  <div class="pager">
+    <% if first_page = relation.first_page %>
+      <%= link_to t('pager.first'), page_path(first_page, options), class: 'first' %>
+    <% end %>
+    <% if previous_page = relation.previous_page %>
+      <%= link_to t('pager.previous'), page_path(previous_page, options), class: 'previous' %>
+    <% end %>
+    <% if less_pages %>
+      <span class="ellipsis">...</span>
+    <% end %>
+    <% pages.each do |page| %>
+      <% if relation.current_page == page %>
+        <span class="page current"><%= page %></span>
+      <% else %>
+        <%= link_to page, page_path(page, options), class: 'page' %>
+      <% end %>
+    <% end %>
+    <% if more_pages %>
+      <span class="ellipsis">...</span>
+    <% end %>
+    <% if next_page = relation.next_page %>
+      <%= link_to t('pager.next'), page_path(next_page, options), class: 'next' %> 
+    <% end %>
+    <% if last_page = relation.last_page %>
+      <%= link_to t('pager.last'), page_path(last_page, options), class: 'last' %>
+    <% end %>
+  </div>
+<% end %>
