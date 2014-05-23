@@ -14,11 +14,15 @@ module Pagers
                 current_page = [number.to_i, 1].max
                 offset_value = (length * (current_page - 1)) + (current_page == 1 ? padding : 0)
                 limit_value = length - (current_page == 1 ? padding : 0)
-                limit(limit_value).offset(offset_value).extending(Pagers::ActiveRecord::Relation).tap do |relation|
-                  relation.instance_variable_set :@padding, padding
-                  relation.instance_variable_set :@length, length
-                  relation.instance_variable_set :@current_page, current_page
+                values = Module.new do
+                  define_method :page_length do
+                    length
+                  end
+                  define_method :current_page do
+                    current_page
+                  end
                 end
+                limit(limit_value).offset(offset_value).extending(Pagers::ActiveRecord::Relation, values)
               }
             end
           end

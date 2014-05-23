@@ -24,10 +24,10 @@ And in your views just:
 
 == Defaults
 
-If you want to change the parameter or how many pages will be show you can override the values in the helper:
+If you want to change defaults you can override the values in the helper:
   <%= paginate @collection, parameter: :p, pages: 3 %>
 
-Or to set it globally in your application.rb:
+Or to set them globally in your application.rb:
   config.pagers.parameter = :p
   config.pagers.pages = 3
   config.pagers.length = 5

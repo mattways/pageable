@@ -4,11 +4,7 @@ module Pagers
       extend ActiveSupport::Concern
 
       def total_pages
-        @total_pages ||= [(total_count.to_f / @length).ceil, 1].max
-      end
-
-      def current_page
-        @current_page
+        @total_pages ||= [(total_count.to_f / page_length).ceil, 1].max
       end
 
       def previous_page
