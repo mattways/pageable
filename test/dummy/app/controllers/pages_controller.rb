@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    @models = Model.page(params[:p] || 1).per(1)
+    @collection = Model.page((params[:p] || 1), length: 1)
   end
 
 end

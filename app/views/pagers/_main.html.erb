@@ -1,0 +1,35 @@
+<% if collection.total_pages > 1 %>
+  <ul class="pager">
+    <% if collection.previous_page %>
+      <li class="first">
+        <%= link_to t('pager.first'), page_path(collection.first_page, options) %>
+      </li>
+      <li class="previous">
+        <%= link_to t('pager.previous'), page_path(collection.previous_page, options) %>
+      </li>
+    <% end %>
+    <% if less_pages %>
+      <li class="ellipsis">
+        &hellip;
+      </li>
+    <% end %>
+    <% pages.each do |page| %>
+      <li class="page<%= ' current' if collection.current_page == page %>">
+        <%= link_to page, page_path(page, options) %>
+      </li>
+    <% end %>
+    <% if more_pages %>
+      <li class="ellipsis">
+        &hellip;
+      </li>
+    <% end %>
+    <% if collection.next_page %>
+      <li class="next">
+        <%= link_to t('pager.next'), page_path(collection.next_page, options) %>
+      </li>
+      <li class="last">
+        <%= link_to t('pager.last'), page_path(collection.last_page, options) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
