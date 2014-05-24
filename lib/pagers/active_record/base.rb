@@ -12,9 +12,12 @@ module Pagers
                 length = options[:length] || Rails.application.config.pagers.length
                 padding = options[:padding] || Rails.application.config.pagers.padding
                 current_page = [number.to_i, 1].max
-                offset_value = (length * (current_page - 1)) + (current_page == 1 ? padding : 0)
-                limit_value = length - (current_page == 1 ? padding : 0)
+                offset_value = (length * (current_page - 1)) + padding
+                limit_value = length
                 values = Module.new do
+                  define_method :padding do
+                    padding
+                  end
                   define_method :page_length do
                     length
                   end

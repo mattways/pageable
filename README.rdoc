@@ -15,7 +15,7 @@ Then bundle:
 = Usage
 
 Call the page scope:
-  @collection = Model.page(1, length: 10)
+  @collection = Model.page(1, length: 10, padding: 4)
 
 And in your views just:
   <%= paginate @collection %>

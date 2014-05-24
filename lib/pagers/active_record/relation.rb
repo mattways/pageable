@@ -32,7 +32,7 @@ module Pagers
           r = except(:limit, :offset, :order, :reorder)
           r = r.except(:includes) unless references_eager_loaded_tables?
           r = r.count
-          r.respond_to?(:count) ? r.count : r
+          (r.respond_to?(:count) ? r.count : r) - padding
         end
       end
 
