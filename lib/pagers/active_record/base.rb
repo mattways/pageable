@@ -9,8 +9,8 @@ module Pagers
           subclass.class_eval do
             if superclass == ::ActiveRecord::Base
               scope :page, ->(number, options={}) {
-                length = options[:length] || Rails.application.config.pagers.length
-                padding = options[:padding] || Rails.application.config.pagers.padding
+                length = options[:length] || Rails.application.config.pagers[:length]
+                padding = options[:padding] || Rails.application.config.pagers[:padding]
                 current_page = [number.to_i, 1].max
                 offset_value = (length * (current_page - 1)) + padding
                 limit_value = length
