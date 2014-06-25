@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Museways']
   s.email       = ['hello@museways.com']
   s.homepage    = 'https://github.com/museways/pagers'
-  s.summary     = 'Pagination for Rails.'
+  s.summary     = 'Pagers for rails.'
   s.description = 'Inspired in kaminari and will_paginate but more minimalistic.'
   s.license     = 'MIT'
 

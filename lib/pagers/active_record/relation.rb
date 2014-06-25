@@ -26,7 +26,7 @@ module Pagers
       def out_of_bounds?
         @out_of_bounds ||= (current_page > total_pages || current_page < first_page)
       end
- 
+
       def total_count
         @total_count ||= begin
           r = except(:limit, :offset, :order, :reorder)

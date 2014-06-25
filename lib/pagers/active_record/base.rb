@@ -2,7 +2,6 @@ module Pagers
   module ActiveRecord
     module Base
       extend ActiveSupport::Concern
-
       module ClassMethods
 
         def inherited(subclass)

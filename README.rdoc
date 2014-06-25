@@ -1,34 +1,40 @@
-{<img src="https://badge.fury.io/rb/pagers.png" alt="Gem Version" />}[http://badge.fury.io/rb/pagers] {<img src="https://codeclimate.com/github/museways/pagers.png" />}[https://codeclimate.com/github/museways/pagers] {<img src="https://travis-ci.org/museways/pagers.png?branch=master" alt="Build Status" />}[https://travis-ci.org/museways/pagers] {<img src="https://gemnasium.com/museways/pagers.png" alt="Dependency Status" />}[https://gemnasium.com/museways/pagers]
+{<img src="https://badge.fury.io/rb/pagers.png" alt="Gem Version" />}[http://badge.fury.io/rb/pagers] {<img src="https://codeclimate.com/github/museways/pagers.png" />}[https://codeclimate.com/github/museways/pagers] {<img src="https://travis-ci.org/museways/pagers.png?branch=master" alt="Build Status" />}[https://travis-ci.org/museways/pagers]
 
 = Pagers
 
-Inspired in kaminari and will_paginate but more minimalistic.
+Minimalistic pagination inspired in kaminari and will_paginate for rails.
 
 = Install
 
 Put this line in your Gemfile:
   gem 'pagers'
- 
+
 Then bundle:
   $ bundle
- 
+
 = Usage
 
-Call the page scope:
+Call the page scope from your models:
   @collection = Model.page(1, length: 10, padding: 4)
 
 And in your views just:
   <%= paginate @collection %>
 
-= Configuration
-
-== Defaults
-
-If you want to change defaults you can override the values in the helper:
+You can customize the parameter and the pages if you like:
   <%= paginate @collection, parameter: :p, pages: 3 %>
 
-Or to set them globally in your application.rb:
+= Configuration
+
+All the defaults can be customized globally in your application.rb:
   config.pagers.parameter = :p
   config.pagers.pages = 3
   config.pagers.length = 5
   config.pagers.padding = 0
+
+= Credits
+
+This gem is maintained and funded by museways[http://museways.com].
+
+= License
+
+It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
