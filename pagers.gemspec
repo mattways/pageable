@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['hello@museways.com']
   s.homepage    = 'https://github.com/museways/pagers'
   s.summary     = 'Pagers for rails.'
-  s.description = 'Inspired in kaminari and will_paginate but more minimalistic.'
+  s.description = 'Minimalistic pagers inspired in kaminari and will_paginate for rails.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']

@@ -2,7 +2,7 @@
 
 = Pagers
 
-Minimalistic pagination inspired in kaminari and will_paginate for rails.
+Minimalistic pagers inspired in kaminari and will_paginate for rails.
 
 = Install
 
