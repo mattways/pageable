@@ -7,10 +7,12 @@ Minimalistic pagers inspired in kaminari and will_paginate for rails.
 # Install
 
 Put this line in your Gemfile:
-  gem 'pagers'
+
+    gem 'pagers'
 
 Then bundle:
-  $ bundle
+
+    $ bundle
 
 # Configuration
 
