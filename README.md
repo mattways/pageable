@@ -4,7 +4,7 @@
 
 Minimalistic pagers inspired in kaminari and will_paginate for rails.
 
-# Install
+## Install
 
 Put this line in your Gemfile:
 ```ruby
@@ -15,7 +15,7 @@ Then bundle:
 
     $ bundle
 
-# Configuration
+## Configuration
 
 Generate the configuration file:
 ```ruby
@@ -24,7 +24,7 @@ rails g pagers:install
 
 NOTE: This will generate the config/initializers/pagers.rb.
 
-# Usage
+## Usage
 
 Call the page scope from your models:
 ```ruby
@@ -38,10 +38,25 @@ And in your views just:
 
 NOTE: You can override the parameters in the paginate method.
 
-# Credits
+## SEO
+
+You can add the parameter to paths:
+```ruby
+get 'search/(:page)' => 'products#search'
+```
+
+To produces routes like:
+    search
+    search/2
+    search/3
+    .
+    .
+    .
+
+## Credits
 
 This gem is maintained and funded by [museways](http://museways.com).
 
-# License
+## License
 
 It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
