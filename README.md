@@ -39,7 +39,7 @@ NOTE: You can override the parameters in the paginate method.
 
 # Credits
 
-This gem is maintained and funded by museways[http://museways.com].
+This gem is maintained and funded by [museways](http://museways.com).
 
 # License
 
