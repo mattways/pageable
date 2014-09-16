@@ -50,14 +50,14 @@ NOTE: You can override the parameters in the scope and in the helper.
 
 You can add the parameter to paths:
 ```ruby
-get 'search/(:page)' => 'products#search'
+get 'search/:query/(:page)' => 'products#search'
 ```
 
 To produces routes like:
 
-    search
-    search/2
-    search/3
+    search/sample
+    search/sample/2
+    search/sample/3
     .
     .
     .
