@@ -4,12 +4,12 @@ module Pagers
       extend ActiveSupport::Concern
 
       def page_path(page, options={})
-        parameter = options[:parameter] || Rails.application.config.pagers.parameter
-        request.path + '?' + request.query_parameters.merge(parameter => page).to_query
+        parameter = options[:parameter] || Pagers.config.parameter
+        url_for parameter => page, only_path: true
       end
 
       def paginate(collection, options={})
-        pages = options[:pages] || Rails.application.config.pagers.pages
+        pages = options[:pages] || Pagers.config.pages
         if collection.total_pages >= pages
           middle = (pages / 2).ceil
           if collection.current_page > (collection.total_pages - middle)

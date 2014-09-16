@@ -1,6 +1,6 @@
 class CreateModels < ActiveRecord::Migration
   def change
-    create_table :models do |t|
+    create_table :records do |t|
       t.string :name
 
       t.timestamps
