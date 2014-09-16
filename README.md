@@ -46,6 +46,7 @@ get 'search/(:page)' => 'products#search'
 ```
 
 To produces routes like:
+
     search
     search/2
     search/3
