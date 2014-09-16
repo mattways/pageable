@@ -53,7 +53,7 @@ You can add the parameter to paths:
 get 'search/:query/(:page)' => 'products#search'
 ```
 
-To produces routes like:
+To produce routes like:
 
     search/sample
     search/sample/2
