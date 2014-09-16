@@ -22,8 +22,6 @@ Generate the configuration file:
 rails g pagers:install
 ```
 
-NOTE: This will generate the config/initializers/pagers.rb.
-
 The defaults values are:
 ```ruby
 Pagers.configure do |config|
@@ -46,7 +44,7 @@ And in your views just:
 <%= paginate @collection %>
 ```
 
-NOTE: You can override the parameters in the paginate method.
+NOTE: You can override the parameters in the scope and in the helper.
 
 ## SEO
 
