@@ -12,6 +12,10 @@ class RouteTest < ActionDispatch::IntegrationTest
     assert_select 'li.current a[href=/?page=1]', '1'
     get '/?page=2'
     assert_select 'li.current a[href=/?page=2]', '2'
+    get '/?dummy='
+    assert_select 'li.current a[href=/?dummy=&amp;page=1]', '1'
+    get '/?dummy=&page=2'
+    assert_select 'li.current a[href=/?dummy=&amp;page=2]', '2'
   end
 
   test 'route page param' do
@@ -24,6 +28,10 @@ class RouteTest < ActionDispatch::IntegrationTest
     assert_select 'li.current a[href=/1]', '1'
     get '/2'
     assert_select 'li.current a[href=/2]', '2'
+    get '/?dummy='
+    assert_select 'li.current a[href=/1?dummy=]', '1'
+    get '/2?dummy='
+    assert_select 'li.current a[href=/2?dummy=]', '2'
   end
 
 end

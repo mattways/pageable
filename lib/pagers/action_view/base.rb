@@ -5,7 +5,7 @@ module Pagers
 
       def page_path(page, options={})
         parameter = options[:parameter] || Pagers.config.parameter
-        url_for parameter => page, only_path: true
+        url_for request.query_parameters.merge(parameter => page, only_path: true)
       end
 
       def paginate(collection, options={})
