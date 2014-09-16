@@ -24,6 +24,16 @@ rails g pagers:install
 
 NOTE: This will generate the config/initializers/pagers.rb.
 
+The defaults values are:
+```ruby
+Pagers.configure do |config|
+  config.length = 20
+  config.padding = 0
+  config.parameter = :page
+  config.pages = 5
+end
+```
+
 ## Usage
 
 Call the page scope from your models:
