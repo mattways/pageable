@@ -1,6 +1,6 @@
-[![Gem Version](https://badge.fury.io/rb/pagers.svg)](http://badge.fury.io/rb/pagers) [![Code Climate](https://codeclimate.com/github/museways/pagers/badges/gpa.svg)](https://codeclimate.com/github/museways/pagers) [![Build Status](https://travis-ci.org/museways/pagers.svg?branch=3.0.3)](https://travis-ci.org/museways/pagers)
-
 # Pagers
+
+[![Gem Version](https://badge.fury.io/rb/pagers.svg)](http://badge.fury.io/rb/pagers) [![Code Climate](https://codeclimate.com/github/museways/pagers/badges/gpa.svg)](https://codeclimate.com/github/museways/pagers) [![Build Status](https://travis-ci.org/museways/pagers.svg?branch=3.0.3)](https://travis-ci.org/museways/pagers)
 
 Minimalistic pagers inspired in kaminari and will_paginate for rails.
 
