@@ -12,14 +12,16 @@ gem 'pagers'
 ```
 
 Then bundle:
-
-    $ bundle
+```
+$ bundle
+```
 
 ## Configuration
 
 Generate the configuration file:
-
-    rails g pagers:install
+```
+rails g pagers:install
+```
 
 The defaults values are:
 ```ruby
@@ -39,7 +41,7 @@ Call the page scope from your models:
 ```
 
 And in your views just:
-```ruby
+```erb
 <%= paginate @collection %>
 ```
 
@@ -53,13 +55,14 @@ get 'search/:query/(:page)' => 'products#search'
 ```
 
 To produce routes like:
-
-    search/sample
-    search/sample/2
-    search/sample/3
-    .
-    .
-    .
+```
+search/sample
+search/sample/2
+search/sample/3
+.
+.
+.
+```
 
 ## Credits
 
