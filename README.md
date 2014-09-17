@@ -18,9 +18,8 @@ Then bundle:
 ## Configuration
 
 Generate the configuration file:
-```ruby
-rails g pagers:install
-```
+
+    rails g pagers:install
 
 The defaults values are:
 ```ruby
