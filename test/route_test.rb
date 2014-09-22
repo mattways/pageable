@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RouteTest < ActionDispatch::IntegrationTest
 
-  test 'query page param' do
+  test 'query param' do
     Rails.application.routes.draw do
       get '/' => 'pages#index'
     end
@@ -18,7 +18,7 @@ class RouteTest < ActionDispatch::IntegrationTest
     assert_select 'li.current a[href=/?dummy=&amp;page=2]', '2'
   end
 
-  test 'route page param' do
+  test 'route param' do
     Rails.application.routes.draw do
       get '(:page)' => 'pages#index'
     end

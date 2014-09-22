@@ -6,31 +6,31 @@ class LastTest < ActiveSupport::TestCase
     10.times.each { |index| Record.create }
   end
 
-  test 'should have 5 pages' do
+  test 'total pages' do
     assert_equal 5, relation.total_pages
   end
 
-  test 'current page should be 5' do
+  test 'current page' do
     assert_equal 5, relation.current_page
   end
 
-  test 'first page should be 1' do
+  test 'first page' do
     assert_equal 1, relation.first_page
   end
 
-  test 'should have previous page 4' do
+  test 'previous page' do
     assert_equal 4, relation.previous_page
   end
 
-  test 'should not have next page' do
+  test 'next page' do
     assert_nil relation.next_page
   end
   
-  test 'last page shuold be 5' do
+  test 'last page' do
     assert_equal 5, relation.last_page
   end
 
-  test 'should not be out of bounds' do
+  test 'out of bounds' do
     assert !relation.out_of_bounds?
   end
 

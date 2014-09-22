@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PaddingTest < ActiveSupport::TestCase
  
-  test 'padding not alter total pages' do
+  test 'total pages with padding' do
     19.times.each { |index| Record.create }
 
     relation = Record.page(1, length: 15, padding: 4)
