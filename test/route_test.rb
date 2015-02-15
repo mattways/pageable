@@ -22,13 +22,13 @@ class RouteTest < ActionDispatch::IntegrationTest
     end
     get '/?dummy='
     if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
-      assert_select 'li.current a[href="/?dummy=&amp;page=1"]:contains(1)'
+      assert_select 'li.current a[href="/?dummy=&page=1"]:contains(1)'
     else
       assert_select 'li.current a[href="/?dummy=&amp;page=1"]', '1'
     end
     get '/?dummy=&page=2'
     if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
-      assert_select 'li.current a[href="/?dummy=&amp;page=2"]:contains(2)'
+      assert_select 'li.current a[href="/?dummy=&page=2"]:contains(2)'
     else
       assert_select 'li.current a[href="/?dummy=&amp;page=2"]', '2'
     end
