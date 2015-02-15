@@ -9,13 +9,29 @@ class RouteTest < ActionDispatch::IntegrationTest
 
     10.times.each { Record.create }
     get '/'
-    assert_select 'li.current a[href=/?page=1]', '1'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/?page=1"]:contains(1)'
+    else
+      assert_select 'li.current a[href="/?page=1"]', '1'
+    end
     get '/?page=2'
-    assert_select 'li.current a[href=/?page=2]', '2'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/?page=2"]:contains(2)'
+    else
+      assert_select 'li.current a[href="/?page=2"]', '2'
+    end
     get '/?dummy='
-    assert_select 'li.current a[href=/?dummy=&amp;page=1]', '1'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/?dummy=&amp;page=1"]:contains(1)'
+    else
+      assert_select 'li.current a[href="/?dummy=&amp;page=1"]', '1'
+    end
     get '/?dummy=&page=2'
-    assert_select 'li.current a[href=/?dummy=&amp;page=2]', '2'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/?dummy=&amp;page=2"]:contains(2)'
+    else
+      assert_select 'li.current a[href="/?dummy=&amp;page=2"]', '2'
+    end
   end
 
   test 'route param' do
@@ -25,13 +41,29 @@ class RouteTest < ActionDispatch::IntegrationTest
 
     10.times.each { Record.create }
     get '/'
-    assert_select 'li.current a[href=/1]', '1'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/1"]:contains(1)'
+    else
+      assert_select 'li.current a[href="/1"]', '1'
+    end
     get '/2'
-    assert_select 'li.current a[href=/2]', '2'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/2"]:contains(2)'
+    else
+      assert_select 'li.current a[href="/2"]', '2'
+    end
     get '/?dummy='
-    assert_select 'li.current a[href=/1?dummy=]', '1'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/1?dummy="]:contains(1)'
+    else
+      assert_select 'li.current a[href="/1?dummy="]', '1'
+    end
     get '/2?dummy='
-    assert_select 'li.current a[href=/2?dummy=]', '2'
+    if Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR >= 2
+      assert_select 'li.current a[href="/2?dummy="]:contains(2)'
+    else
+      assert_select 'li.current a[href="/2?dummy="]', '2'
+    end
   end
 
 end
