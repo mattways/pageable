@@ -7,9 +7,9 @@ require 'pagers/version'
 Gem::Specification.new do |s|
   s.name        = 'pagers'
   s.version     = Pagers::VERSION
-  s.authors     = ['Museways']
-  s.email       = ['hello@museways.com']
-  s.homepage    = 'https://github.com/museways/pagers'
+  s.authors     = ['mmontossi']
+  s.email       = ['mmontossi@buyin.io']
+  s.homepage    = 'https://github.com/mmontossi/pagers'
   s.summary     = 'Pagers for rails.'
   s.description = 'Minimalistic pagers inspired in kaminari and will_paginate for rails.'
   s.license     = 'MIT'

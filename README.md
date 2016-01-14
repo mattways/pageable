@@ -1,4 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/pagers.svg)](http://badge.fury.io/rb/pagers) [![Code Climate](https://codeclimate.com/github/museways/pagers/badges/gpa.svg)](https://codeclimate.com/github/museways/pagers) [![Build Status](https://travis-ci.org/museways/pagers.svg?branch=3.0.3)](https://travis-ci.org/museways/pagers) [![Dependency Status](https://gemnasium.com/museways/pagers.svg)](https://gemnasium.com/museways/pagers)
+[![Gem Version](https://badge.fury.io/rb/pagers.svg)](http://badge.fury.io/rb/pagers)
+[![Code Climate](https://codeclimate.com/github/mmontossi/pagers/badges/gpa.svg)](https://codeclimate.com/github/mmontossi/pagers)
+[![Build Status](https://travis-ci.org/mmontossi/pagers.svg)](https://travis-ci.org/mmontossi/pagers)
+[![Dependency Status](https://gemnasium.com/mmontossi/pagers.svg)](https://gemnasium.com/mmontossi/pagers)
 
 # Pagers
 
@@ -66,7 +69,7 @@ search/sample/3
 
 ## Credits
 
-This gem is maintained and funded by [museways](http://museways.com).
+This gem is maintained and funded by [mmontossi](https://github.com/mmontossi).
 
 ## License
 
