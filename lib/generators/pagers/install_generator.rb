@@ -5,8 +5,8 @@ module Pagers
 
     source_root File.expand_path('../templates', __FILE__)
 
-    def create_initializer
-      copy_file 'pagers.rb', 'config/initializers/pagers.rb'
+    def create_initializer_file
+      copy_file 'initializer.rb', 'config/initializers/pagers.rb'
     end
 
   end

@@ -7,6 +7,12 @@
 
 Minimalistic pagers inspired in kaminari and will_paginate for rails.
 
+## Why
+
+I did this gem to:
+
+- .
+
 ## Install
 
 Put this line in your Gemfile:
@@ -29,19 +35,24 @@ rails g pagers:install
 The defaults values are:
 ```ruby
 Pagers.configure do |config|
+
   config.length = 20
   config.padding = 0
-  config.parameter = :page
-  config.pages = 5
+  config.links = 5
+
 end
 ```
 
 ## Usage
 
+### Relation
+
 Call the page scope from your models:
 ```ruby
 @collection = Model.page(1, length: 10, padding: 4)
 ```
+
+### Views
 
 And in your views just:
 ```erb
@@ -50,7 +61,7 @@ And in your views just:
 
 NOTE: You can override the parameters in the scope and in the helper.
 
-## SEO
+### SEO
 
 You can add the parameter to paths:
 ```ruby

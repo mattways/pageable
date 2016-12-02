@@ -1,9 +1,13 @@
 module Pagers
   class Railtie < Rails::Railtie
 
-    initializer 'pagers' do
-      ::ActiveRecord::Base.send :include, Pagers::ActiveRecord::Base
-      ::ActionView::Base.send :include, Pagers::ActionView::Base
+    initializer :pagers do
+      ::ActiveRecord::Base.include(
+        Pagers::Extensions::ActiveRecord::Base
+      )
+      ::ActionView::Base.include(
+        Pagers::Extensions::ActionView::Base
+      )
     end
 
   end
