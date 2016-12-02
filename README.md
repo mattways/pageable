@@ -5,13 +5,15 @@
 
 # Pagers
 
-Minimalistic pagers inspired in kaminari and will_paginate for rails.
+Scope based pagination engine for rails.
 
 ## Why
 
 I did this gem to:
 
-- .
+- Simplify code by keep close integration with rails.
+- Have most common used settings set out of the box.
+- Create a compatible pagination for [indexes gem](https://github.com/mmontossi/indexes).
 
 ## Install
 
@@ -29,10 +31,10 @@ $ bundle
 
 Generate the configuration file:
 ```
-rails g pagers:install
+$ bundler exec rails g pagers:install
 ```
 
-The defaults values are:
+Set the global settings:
 ```ruby
 Pagers.configure do |config|
 
@@ -49,33 +51,33 @@ end
 
 Call the page scope from your models:
 ```ruby
-@collection = Model.page(1, length: 10, padding: 4)
+@products = Product.page(1)
+```
+
+You can override global options by passing a hash:
+```ruby
+@products = Product.page(1, length: 10, padding: 4)
 ```
 
 ### Views
 
-And in your views just:
+You can use paginate helper to generate a pager html:
 ```erb
 <%= paginate @collection %>
 ```
 
-NOTE: You can override the parameters in the scope and in the helper.
-
 ### SEO
 
-You can add the parameter to paths:
+If you want to remove the page query parameter, add an optional parameter to the route:
 ```ruby
 get 'search/:query/(:page)' => 'products#search'
 ```
 
-To produce routes like:
+That will produce links like this:
 ```
 search/sample
 search/sample/2
 search/sample/3
-.
-.
-.
 ```
 
 ## Credits

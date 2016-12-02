@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['mmontossi@gmail.com']
   s.homepage    = 'https://github.com/mmontossi/pagers'
   s.summary     = 'Pagers for rails.'
-  s.description = 'Minimalistic pagers inspired in kaminari and will_paginate for rails.'
+  s.description = 'Scope based pagination engine for rails.'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
