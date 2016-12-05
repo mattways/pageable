@@ -1,7 +1,7 @@
 module Pagers
   class Railtie < Rails::Railtie
 
-    initializer :pagers do
+    initializer 'pagers.extensions' do
       ::ActiveRecord::Base.include(
         Pagers::Extensions::ActiveRecord::Base
       )
