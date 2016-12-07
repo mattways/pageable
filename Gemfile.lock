@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pagers (3.2.0)
+    pagers (4.0.0.0)
       rails (>= 4.2.0, < 4.3.0)
 
 GEM
