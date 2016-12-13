@@ -10,7 +10,7 @@ class GeneratorsTest < Rails::Generators::TestCase
   end
 
   test 'install' do
-    self.class.tests Pagers::InstallGenerator
+    self.class.tests Pagers::Generators::InstallGenerator
     run_generator
     assert_file 'config/initializers/pagers.rb'
   end

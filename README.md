@@ -13,7 +13,7 @@ I did this gem to:
 
 - Simplify code by keep close integration with rails.
 - Have most common used settings set out of the box.
-- Create a compatible pagination for [indexes gem](https://github.com/mmontossi/indexes).
+- Create a compatible pagination for [indexers gem](https://github.com/mmontossi/indexers).
 
 ## Install
 
