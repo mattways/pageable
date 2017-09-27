@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = 'pagers'
   s.version     = Pagers::VERSION
   s.authors     = ['mmontossi']
-  s.email       = ['mmontossi@museways.com']
-  s.homepage    = 'https://github.com/mmontossi/pagers'
+  s.email       = ['hi@museways.com']
+  s.homepage    = 'https://github.com/museways/pagers'
   s.summary     = 'Pagers for rails.'
   s.description = 'Scope based pagination engine for rails.'
   s.license     = 'MIT'

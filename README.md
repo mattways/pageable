@@ -1,7 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/pagers.svg)](http://badge.fury.io/rb/pagers)
-[![Code Climate](https://codeclimate.com/github/mmontossi/pagers/badges/gpa.svg)](https://codeclimate.com/github/mmontossi/pagers)
-[![Build Status](https://travis-ci.org/mmontossi/pagers.svg)](https://travis-ci.org/mmontossi/pagers)
-[![Dependency Status](https://gemnasium.com/mmontossi/pagers.svg)](https://gemnasium.com/mmontossi/pagers)
+[![Code Climate](https://codeclimate.com/github/museways/pagers/badges/gpa.svg)](https://codeclimate.com/github/museways/pagers)
+[![Build Status](https://travis-ci.org/museways/pagers.svg)](https://travis-ci.org/museways/pagers)
+[![Dependency Status](https://gemnasium.com/museways/pagers.svg)](https://gemnasium.com/museways/pagers)
 
 # Pagers
 
@@ -13,7 +13,7 @@ I did this gem to:
 
 - Simplify code by keep close integration with rails.
 - Have most common used settings set out of the box.
-- Create a compatible pagination for [indexers gem](https://github.com/mmontossi/indexers).
+- Create a compatible pagination for [indexers gem](https://github.com/museways/indexers).
 
 ## Install
 
@@ -88,7 +88,7 @@ I will mainly ensure compatibility to Rails, AWS, PostgreSQL, Redis, Elasticsear
 
 ## Credits
 
-This gem is maintained and funded by [mmontossi](https://github.com/mmontossi).
+This gem is maintained and funded by [museways](https://github.com/museways).
 
 ## License
 
