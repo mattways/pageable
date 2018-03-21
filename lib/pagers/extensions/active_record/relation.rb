@@ -32,8 +32,8 @@ module Pagers
           @total_count ||= begin
             r = except(:limit, :offset, :order)
             r = r.except(:includes) unless references_eager_loaded_tables?
-            r = r.count
-            (r.respond_to?(:count) ? r.count : r) - padding
+            count = r.count(:all)
+            [(count - padding), 0].max
           end
         end
 
